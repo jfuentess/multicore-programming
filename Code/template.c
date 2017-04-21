@@ -17,7 +17,7 @@
 #include <cilk/common.h>
 #endif
 
-#define num_threads __cilkrts_get_nworkers();
+#define num_threads __cilkrts_get_nworkers()
 
 int main(int argc, char* argv[]) {
 
