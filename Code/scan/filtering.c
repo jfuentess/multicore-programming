@@ -1,4 +1,4 @@
-// Compile: gcc -std=gnu99 -o filtering filtering.c util.c defs.c -fcilkplus -lcilkrts
+// Compile: gcc -std=gnu99 -o filtering filtering.c util.c defs.c -fcilkplus -lcilkrts -lrt
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -142,8 +142,8 @@ int main(int argc, char* argv[]) {
   }
 
   int num_success = 0;
-  int* output_par = filtering(A, B, n);
-  //int* output_seq = filtering_seq(A, n, &num_success);
+  //  int* output_par = filtering(A, B, n);
+  int* output_seq = filtering_seq(A, n, &num_success);
 
   if (clock_gettime(CLOCK_THREAD_CPUTIME_ID , &etime)) {
     fprintf(stderr, "clock_gettime failed");
