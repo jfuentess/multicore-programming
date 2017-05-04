@@ -4,6 +4,7 @@ typedef struct _graph_t Graph;
 
 typedef struct _node_t Node;
 typedef struct _tree_t Tree;
+typedef struct _euler_node_t ENode;
 typedef struct _stack_t Stack;
 
 typedef int item_t;
@@ -40,6 +41,13 @@ struct _tree_t {
   Edge* E; // Array of edges of the tree. It is the concatenation of the adjacency lists of all nodes
   unsigned int n; // Number of nodes in the tree
   // The number of edges is n-1
+};
+
+struct _euler_node_t {
+  unsigned int value;
+  int next; // stores the index of the succesor in the array. Since
+	    // the parallel_list_ranking algorithm uses this fields to
+	    // store some negative values, it must be int instead of uint.
 };
 
 struct _stack_t {

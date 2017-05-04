@@ -65,6 +65,8 @@ int main(int argc, char* argv[]) {
     exit(-1);
   }
 
+  /* YOUR PARALLEL CODE */
+
   if (clock_gettime(CLOCK_THREAD_CPUTIME_ID , &etime)) {
     fprintf(stderr, "clock_gettime failed");
     exit(-1);
