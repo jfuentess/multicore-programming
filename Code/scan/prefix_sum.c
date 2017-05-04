@@ -21,7 +21,6 @@
 
 #define num_threads __cilkrts_get_nworkers()
 
-/* Sequential prefix block by block */
 void prefix_sum_block(uint* A, uint size) {
   uint chk = size/num_threads;
   cilk_for(uint i = 0; i < num_threads; i++) {
@@ -36,22 +35,22 @@ void prefix_sum_block(uint* A, uint size) {
     }
   }
   
-  /* for(uint i = 1; i < num_threads-1; i++) */
-  /*   A[((i+1)*chk)-1] += A[i*chk-1]; */
+  for(uint i = 1; i < num_threads-1; i++)
+    A[((i+1)*chk)-1] += A[i*chk-1];
   
-  /* if(num_threads > 1) */
-  /*   A[size-1] += A[(num_threads-1)*chk-1]; */
+  if(num_threads > 1)
+    A[size-1] += A[(num_threads-1)*chk-1];
   
-  /* cilk_for(uint i = 1; i < num_threads; i++) { */
-  /*   uint ll = i*chk, ul = ll + chk - 1; */
-  /*   if(i == num_threads-1) */
-  /*     ul = size-1; */
+  cilk_for(uint i = 1; i < num_threads; i++) {
+    uint ll = i*chk, ul = ll + chk - 1;
+    if(i == num_threads-1)
+      ul = size-1;
 
-  /*   uint acc = A[ll-1]; */
-  /*   for(uint j = ll; j < ul; j++) { */
-  /*     A[j] += acc; */
-  /*   } */
-  /* } */
+    uint acc = A[ll-1];
+    for(uint j = ll; j < ul; j++) {
+      A[j] += acc;
+    }
+  }
 }
 
 /* Sequential prefix sum */
