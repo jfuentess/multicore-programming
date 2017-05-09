@@ -48,6 +48,7 @@ struct _euler_node_t {
   int next; // stores the index of the succesor in the array. Since
 	    // the parallel_list_ranking algorithm uses this fields to
 	    // store some negative values, it must be int instead of uint.
+  uint tmp;
 };
 
 struct _stack_t {
