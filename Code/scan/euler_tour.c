@@ -102,7 +102,7 @@ void parallel_list_ranking(ENode* L, uint n) {
   free(sublist);
 }
 
-void euler_tour(Tree *t, uint init) {
+uint* euler_tour(Tree *t, uint init) {
   uint num_edges = 2*(t->n-1);
   ENode* ET = malloc(num_edges*sizeof(ENode)); // Euler Tour represented by a linked list
   uint* output = malloc(num_edges*sizeof(uint)); // Euler Tour represented by an array
@@ -184,7 +184,7 @@ int main(int argc, char* argv[]) {
     exit(-1);
   }
 
-  euler_tour(tree, 0);
+  uint *ET = euler_tour(tree, 0);
   
   if (clock_gettime(CLOCK_THREAD_CPUTIME_ID , &etime)) {
     fprintf(stderr, "clock_gettime failed");
