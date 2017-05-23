@@ -1,4 +1,4 @@
-// Compilar: g++ -std=c++11 -o pqs parallel_quick_sort.cpp -fcilkplus -lcilkrts
+// Compilar: g++ -std=c++11 -o pqs parallel_quick_sort.cpp -fcilkplus -lcilkrts -lrt
 /*
   Original code available at
   http://parallelbook.com/sites/parallelbook.com/files/code20131121.zip
@@ -113,6 +113,11 @@ void print_array(int *x, int n) {
 }
 
 int main(int argc, char* argv[]) {
+
+  if(argc < 2) {
+    fprintf(stderr, "Usage: %s <number of elements>\n", argv[0]);
+    exit(EXIT_FAILURE);
+  }
 
   int n = atoi(argv[1]);
   int *x = generate_array(n);
