@@ -1,4 +1,4 @@
-// Compilar: g++ -std=c++11 -o pms parallel_merge_sort.cpp -fcilkplus -lcilkrts
+// Compilar: g++ -std=c++11 -o pms parallel_merge_sort.cpp -fcilkplus -lcilkrts -lrt
 /*
   Original code available at
   http://parallelbook.com/sites/parallelbook.com/files/code20131121.zip

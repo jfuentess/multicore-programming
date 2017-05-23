@@ -1,4 +1,4 @@
-// Compilar: g++ -std=c++11 -o ss sequential_sort.cpp
+// Compilar: g++ -std=c++11 -o ss sequential_sort.cpp -lrt
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,6 +27,11 @@ int *generate_array(int n) {
 }
 
 int main(int argc, char* argv[]) {
+
+  if(argc < 2) {
+    fprintf(stderr, "Usage: %s <number of elements>\n", argv[0]);
+    exit(EXIT_FAILURE);
+  }
 
   int n = atoi(argv[1]);
   int *x = generate_array(n);
