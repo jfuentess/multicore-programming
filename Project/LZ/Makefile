@@ -1,4 +1,4 @@
-SUBDIRS = LZ-Decoder RLZ_parallel/src
+SUBDIRS = LZ-Decoder RLZ/src
 .PHONY: subdirs $(SUBDIRS) clean
 
 subdirs: $(SUBDIRS)
