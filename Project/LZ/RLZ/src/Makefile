@@ -1,6 +1,7 @@
 include ../../../sdsl-lite-2.0.3/Make.helper
 
-CXX_FLAGS= -g -std=c++11 -Wextra -O9 -DNDEBUG
+#CXX_FLAGS= -g -std=c++11 -Wextra -O9 -DNDEBUG -lrt
+CXX_FLAGS= -g -std=c++11 -O9 -DNDEBUG -lrt
 
 INCLUDES=-isystem$(INC_DIR)
 LIB=$(LIB_DIR)/libsdsl.a $(LIB_DIR)/libdivsufsort.a $(LIB_DIR)/libdivsufsort64.a
